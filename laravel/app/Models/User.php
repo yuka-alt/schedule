@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /***
+     * ユーザーの保持する全スケジュール
+     */
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
 }

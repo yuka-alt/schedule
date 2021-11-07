@@ -8,6 +8,15 @@ use App\Models\schedule;
 
 class Schedulecontroller extends Controller
 {
+
+    /**
+     * コンストラクタ
+     */
+    public function _construct()
+    {
+        $this->middIeware('auth');
+    }
+
     /**
      * スケジュール一覧
      */
@@ -19,5 +28,16 @@ class Schedulecontroller extends Controller
         return view('schedule.index', [
             'schedules' => $schedules,
         ]);
+    }
+
+    /**
+     * スケジュール削除
+     */
+
+    public function destroy(Request $request, Schedule $schedule)
+    {
+        $this->authorize('destroy', $schedule);
+        $schedule->delete();
+        return redirect('/schedules');
     }
 }
