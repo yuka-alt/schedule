@@ -1,4 +1,11 @@
 <!--head-->
+<?php
+// エラー表示あり
+ini_set('display_errors',1);
+// 日本時間に設定
+date_default_timezone_set('Asia/Tokyo');
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,13 +13,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="スケジュール帳">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="login.css">
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="/Users/shunyaamaike/team_schedule/laravel/resources/views/schedule/login.css">
   <title>スケジュール帳</title>
 </head>
 
 <!--ログイン画面-->
 <body>
-  <h1>スケジュール</h1>
+    <h1>スケジュール</h1>
   <div class="login">
     <table>
       <form action="login.html" method="get"></form>
@@ -29,7 +39,7 @@
             </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td class="2">
             <input type="submit" value="ログイン">
           </td>
         </tr>
