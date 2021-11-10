@@ -14,9 +14,13 @@ date_default_timezone_set('Asia/Tokyo');
   <meta name="description" content="スケジュール帳">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="" type="image/x-icon">
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="/Users/shunyaamaike/team_schedule/laravel/resources/views/schedule/login.css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/login.css">
   <title>スケジュール帳</title>
 </head>
 
@@ -47,38 +51,3 @@ date_default_timezone_set('Asia/Tokyo');
   </div>
 </body>
 </html>
-
-<!-- スケジュール一覧表示 -->
-@if (count($schedules) > 0)
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <!--test-->
-    </div>
- 
-    <div class="panel-body">
-        <table class="table table-striped schedule-table">
- 
-            <!-- テーブルヘッダ -->
-            <thead>
-                <th> <!--test--></th>
-                <th>&nbsp;</th>
-            </thead>
- 
-            <!-- テーブル本体 -->
-            <tbody>
-                @foreach ($schedules as $schedule)
-                <tr>
-                    <!-- タスク名 -->
-                    <td class="table-text">
-                    </td>
- 
-                    <td>
-                        <!-- TODO: 削除ボタン -->
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-@endif
