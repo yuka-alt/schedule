@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register', [App\Http\Controllers\Schedulecontroller::class, 'register'])->name('register');
+Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
