@@ -1,3 +1,3 @@
 <?php
- hello world
+include_once('index.blade.php');
 ?>
