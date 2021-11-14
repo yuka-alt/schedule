@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 class Schedulecontroller extends Controller
 {
-    // public function register(){
-    //     return view('register');
-    // }
+    public function register(){
+        return view('register');
+    }
 }
