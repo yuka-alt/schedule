@@ -31,19 +31,6 @@ class Schedulecontroller extends Controller
     }
 
     /**
-     * スケジュール登録
-     */
-    //public function store(Request $request)
-    //{
-    //    $this->validate($request,[
-    //        'data' => 'requiredmax:255',
-    //    ]);
-
-        //スケジュール作成
-        
-    //}
-
-    /**
      * スケジュール削除
      */
 
