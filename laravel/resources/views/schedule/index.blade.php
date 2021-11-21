@@ -1,31 +1,30 @@
-<!--head-->
-<?php
-// エラー表示あり
-ini_set('display_errors',1);
-// 日本時間に設定
-date_default_timezone_set('Asia/Tokyo');
-?>
+@extends('layouts.app')
+@section('content')
+<div class="row">
+    <div class="col-md-10 mt-6">
+        <div class="card-body">
+            <h1 class="mt4">新規投稿</h1>
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">件名</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title">
+                </div>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="スケジュール帳">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="" type="image/x-icon">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/login.css">
-  <title>スケジュール帳</title>
-</head>
+                <div class="form-group">
+                    <label for="body">本文</label>
+                    <textarea name="body" class="form-control" id="body" cols="30" rows="10"></textarea>
+                </div>
 
-<!--ログイン画面-->
-<body>
-test
-</body>
-</html>
+                <div class="form-group">
+                    <label for="image">画像 </label>
+                    <div class="col-md-6">
+                        <input id="image" type="file" name="image">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">送信する </button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
