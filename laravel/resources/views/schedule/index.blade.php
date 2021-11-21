@@ -26,28 +26,6 @@ date_default_timezone_set('Asia/Tokyo');
 
 <!--ログイン画面-->
 <body>
-    <h1>スケジュール</h1>
-  <div class="login">
-    <table>
-      <form action="login.html" method="get"></form>
-        <tr>
-          <th>ID</th>
-            <td>
-              <input type="text" name="id" id="" size="24">
-            </td>
-        </tr>
-        <tr>
-          <th>パスワード</th>
-            <td>
-              <input type="password" name="password" id="" size="24">
-            </td>
-        </tr>
-        <tr>
-          <td class="2">
-            <input type="submit" value="ログイン">
-          </td>
-        </tr>
-    </table>
-  </div>
+test
 </body>
 </html>
