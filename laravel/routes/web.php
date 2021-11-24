@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/1month' , [App\Http\Controllers\Schedulecontroller::class, 'month'])->name('1month');
+Route::get('/1month' , [App\Http\Controllers\ScheduleController::class, 'month'])->name('1month');
+
+//Route::get('/1month', 'ScheduleController@month');
