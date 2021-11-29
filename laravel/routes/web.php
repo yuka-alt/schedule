@@ -23,6 +23,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::get('/calendar', [App\Http\Controllers\CalendarController::class, 'calendar'])->name('calendar');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
