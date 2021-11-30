@@ -16,6 +16,24 @@ class Schedulecontroller extends Controller
         $schedules = schedule::all();
         return view('schedule.index', [
             'schedules' => $schedules,
+            // 'test' => 'amaike',
         ]);
     }
+    
+    /**
+     * スケジュール登録
+     */
+    public function store(Request $request)
+    {
+        // var_dump(auth()->id());
+        // exit;
+        schedule::create([
+            'user_id'=> auth()->id(), 
+            'title'=> $request->title,
+            'body'=> $request->body, 
+        ]);
+        // echo 'test'; exit;
+        return redirect('/schedules');
+    }
+
 }

@@ -4,7 +4,8 @@
     <div class="col-md-10 mt-6">
         <div class="card-body">
             <h1 class="mt4">スケジュール</h1>
-            <form enctype="multipart/form-data">
+            <form action="{{url('schedule')}}" method="POST" enctype="multipart/form-data">
+                {{csrf_field()}}
                 <div class="form-group">
                     <label for="title">タイトル</label>
                     <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title">
@@ -22,7 +23,7 @@
                     </div>
                 </div> -->
 
-                <button type="submit" class="btn btn-success">送信する </button>
+                <button type="submit" class="btn btn-success">送信する</button>
             </form>
         </div>
     </div>

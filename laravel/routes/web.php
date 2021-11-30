@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
 
+Route::post('/schedule', [App\Http\Controllers\ScheduleController::class, 'store'])->name('schedule');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
