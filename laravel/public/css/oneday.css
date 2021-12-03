@@ -1,0 +1,15 @@
+table{
+    empty-cells: show;
+    border-collapse: collapse;
+    border: 1px solid black;
+    float: right;
+}
+
+
+table.day td{
+    border: 1px solid black;
+}
+
+p{
+    float: left;
+}

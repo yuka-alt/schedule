@@ -5,11 +5,27 @@ body{
     align-items: center;
 }
 
-.h1{
+h1{
     text-align: center;
-    color: black;
+    color:black;
 }
 
 form{
     align-items: center;
+}
+
+ul{
+    width: 500px;
+    margin: 0 auto;
+}
+
+ul li{
+    list-style: none;
+    margin-top: 10px;
+}
+
+label{
+    margin-right: 10px;
+    width: 100px;
+    float: left;
 }

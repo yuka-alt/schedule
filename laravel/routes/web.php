@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/register', [App\Http\Controllers\Schedulecontroller::class, 'register'])->name('register');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
-Route::get('/1day', [App\Http\Controllers\Schedulecontroller::class, '1day'])->name('1day');
+Route::get('/oneday', [App\Http\Controllers\Schedulecontroller::class, 'oneday'])->name('oneday');

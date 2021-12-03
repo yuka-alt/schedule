@@ -17,7 +17,7 @@ class Schedulecontroller extends Controller
         return view('register');
     }
 
-    public function day(){
-        return view('1day');
+    public function oneday(){
+        return view('oneday');
     }
 }
