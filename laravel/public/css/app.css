@@ -10018,4 +10018,18 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+
+ /* .time{
+   display: flex;
+   font-size: 200px;
+ } */
+}
+
+td{
+  border:solid 1px #000;
+}
+
+th{
+  text-align: center;
+  height: 10px;
 }
