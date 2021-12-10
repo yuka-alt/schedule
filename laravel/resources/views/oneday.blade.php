@@ -17,29 +17,73 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
 
     <!-- Styles -->
-    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/oneday.css') }}" rel="stylesheet">
     <title>1dayスケジュール</title>
 </head>
 <body>
     <h1>1dayスケジュール</h1>
+
+    <div class="day">
+        ○月○日
+    </div>
     
-    <table class="day" border="1">
-    <tr>
-        <p>8:00</p><td>&nbsp;</td>
-        <p>9:00</p><td></td>
-        <p>10:00</p><td></td>
-        <p>11:00</p><td></td>
-        <p>12:00</p><td></td>
-        <p>13:00</p><td></td>
-        <p>14:00</p><td></td>
-        <p>15:00</p><td></td>
-        <p>16:00</p><td></td>
-        <p>17:00</p><td></td>
-        <p>18:00</p><td></td>
-        <p>19:00</p><td></td>
-        <p>20:00</p><td></td>
-    </tr>
-    </table>
-    
+    <div class="all">
+        <div class="table_css">
+            <table border="1" align="right">
+            <tr class="nostripe">
+                <td >&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>    
+            <tr class="nostripe">
+                <td>&nbsp;</td>
+            </tr>
+            </table>
+        </div>
+            <p>8:00</p>
+            <p>9:00</p>
+            <p>10:00</p>
+            <p>11:00</p>
+            <p>12:00</p>
+            <p>13:00</p>
+            <p>14:00</p>
+            <p>15:00</p>
+            <p>16:00</p>
+            <p>17:00</p>
+            <p>18:00</p>
+            <p>19:00</p>
+            <p>20:00</p>
+    </div>
 </body>
 </html>
