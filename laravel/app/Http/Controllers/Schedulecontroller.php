@@ -82,4 +82,11 @@ class ScheduleController extends Controller
         return redirect('/schedules');
     }
 
+    public function register(){
+        return view('register');
+    }
+
+    public function oneday(){
+        return view('oneday');
+    }
 }
