@@ -50,14 +50,11 @@ class CalendarView {
 		}
 		
 		$html[] = '</tbody>';
-		
+
 		$html[] = '</table>';
 		$html[] = '</div>';
 		return implode("", $html);
 	}
-}
-
-class CalendarView {
 	
 	protected function getWeeks(){
 		$weeks = [];
