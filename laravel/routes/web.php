@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,16 @@ Route::get('/', function () {
 //Route::get('/1month', 'ScheduleController@month');
 
 Route::get('/month' , [App\Http\Controllers\ScheduleController::class, 'month'])->name('month');
+Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
+
+Route::post('/schedule', [App\Http\Controllers\ScheduleController::class, 'store'])->name('schedule');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/calendar', [App\Http\Controllers\CalendarController::class, 'calendar'])->name('calendar');
+
+Route::get('/register', [App\Http\Controllers\Schedulecontroller::class, 'register'])->name('register');
+Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
+Route::get('/oneday', [App\Http\Controllers\Schedulecontroller::class, 'oneday'])->name('oneday');
