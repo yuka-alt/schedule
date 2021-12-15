@@ -49,10 +49,10 @@ ini_set('display_errors',1);
                 <input type="checkbox" name="all" id="ckeck-a" value="終日"><label for="check-a">終日</label>
             </li>
             <li>
-                <input type="checkbox" name="all" id="check-b" value="繰り返し"><label for="check-b">繰り返し</label>
+                <input type="checkbox" name="repeat" id="check-b" value="繰り返し"><label for="check-b">繰り返し</label>
             </li>
             <li>
-            <button type="submit" >登録する</button>
+            <a href="{{ route('create') }}">{{ __('登録する') }}</a>
             </li>
         </ul>
     </form>

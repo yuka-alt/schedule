@@ -31,43 +31,43 @@
         <div class="table_css">
             <table border="1" align="right">
             <tr class="nostripe">
-                <td >&nbsp;</td>
+                <td >{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedules->title}}</td>
             </tr>
             </table>
         </div>

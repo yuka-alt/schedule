@@ -77,6 +77,12 @@ class ScheduleController extends Controller
             'user_id'=> auth()->id(), 
             'title'=> $request->title,
             'body'=> $request->body, 
+            'place'=>$request->place,
+            'start'=>$request->start,
+            'end'=>$request->end,
+            'all'=>$request->all,
+            'repeat'=>$request->repeat,
+
         ]);
         // echo 'test'; exit;
         return redirect('/schedules');
