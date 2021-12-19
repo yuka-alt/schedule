@@ -6,7 +6,7 @@ Schedule
 ## デモ
 [Webサイトを見る]（URLを記載する）
 
-##　利用している技術
+## 利用している技術
 HTML / CSS / PHP / Laravel
 
 
