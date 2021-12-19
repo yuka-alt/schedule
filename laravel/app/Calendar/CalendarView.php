@@ -17,6 +17,14 @@ class CalendarView {
 	public function getTitle(){
 		return $this->carbon->format('Y年n月');
 	}
+
+		/**
+	 * カレンダーの日付を取得する
+	 */
+	public function getDate(){
+		return $this->carbon->format('Y年n月');
+	}
+
 	/**
 	 * カレンダーの日付を出力する
 	 */
@@ -39,9 +47,9 @@ class CalendarView {
 		// $html[] = '</calendar>';
 		// $html[] = '</table>';
 		// return implode("", $html);
-		return $this->carbon->format('1');
+		return $this->carbon->format('');
 	}
-
+	
 	/**
 	 * カレンダーの曜日を出力する
 	 */
@@ -53,12 +61,12 @@ class CalendarView {
 		$html[] = '<tr>';
     $html[] = '<th></th>';
 		$html[] = '<th>日<br>1</th>';
-		$html[] = '<th>日<br>2</th>';
-		$html[] = '<th>日<br>3</th>';
-		$html[] = '<th>日<br>4</th>';
-		$html[] = '<th>日<br>5</th>';
-		$html[] = '<th>日<br>6</th>';
-		$html[] = '<th>日<br>7</th>';
+		$html[] = '<th>月<br>2</th>';
+		$html[] = '<th>火<br>3</th>';
+		$html[] = '<th>水<br>4</th>';
+		$html[] = '<th>木<br>5</th>';
+		$html[] = '<th>金<br>6</th>';
+		$html[] = '<th>土<br>7</th>';
 		$html[] = '</tr>';
 		$html[] = '</thead>';
 		$html[] = '</calendar>';
