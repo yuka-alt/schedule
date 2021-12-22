@@ -18,13 +18,6 @@ class CalendarView {
 		return $this->carbon->format('Y年n月');
 	}
 
-		/**
-	 * カレンダーの日付を取得する
-	 */
-	public function getDate(){
-		return $this->carbon->format('Y年n月');
-	}
-
 	/**
 	 * カレンダーの日付を出力する
 	 */
