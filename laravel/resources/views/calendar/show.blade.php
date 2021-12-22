@@ -6,7 +6,7 @@
            <div class="card">
                <div class="card-header">{{ $calendar->getTitle() }}</div>
                <div class="card-body">
-                    {!! $calendar->date_timezone_get() !!}
+                    {!! $calendar->getTimezone() !!}
 					{!! $calendar->render() !!}
                     {!! $calendar->time() !!}
                </div>
