@@ -30,45 +30,47 @@
     <div class="all">
         <div class="table_css">
             <table border="1" align="right">
+            @foreach($schedules as $schedule)
             <tr class="nostripe">
-                <td >&nbsp;</td>
+                <td >{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>    
             <tr class="nostripe">
-                <td>&nbsp;</td>
+                <td>{{$schedule->title}}</td>
             </tr>
+            @endforeach
             </table>
         </div>
             <p>8:00</p>
