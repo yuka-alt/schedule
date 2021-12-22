@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/month' , [App\Http\Controllers\ScheduleController::class, 'month'])->name('month');
+
+//Route::get('/1month', 'ScheduleController@month');
+
+Route::get('/month' , [App\Http\Controllers\ScheduleController::class, 'month'])->name('month');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
 
 Route::post('/schedule', [App\Http\Controllers\ScheduleController::class, 'store'])->name('schedule');
