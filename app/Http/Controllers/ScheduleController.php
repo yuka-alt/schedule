@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\schedule;
+use App\Calendar\CalendarWeek;
 
 //use App\Models\schedule;
 
@@ -15,6 +16,7 @@ use App\Models\schedule;
 //}
 
 use App\Calendar\CalendarView;
+
 
 class ScheduleController extends Controller
 {
@@ -118,6 +120,17 @@ class ScheduleController extends Controller
             // 'test' => 'amaike',
         ]);
         return view('oneday');
+    }
+
+
+    public function week(){
+        $calendar = new CalendarWeek(time());
+        $schedules = schedule::all();
+        return view('calendar.week', [
+            'schedules' => $schedules,
+            'calendar' => $calendar, 
+            // 'test' => 'amaike',
+        ]);
     }
 
     // public function time(){
