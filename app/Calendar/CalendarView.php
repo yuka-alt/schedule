@@ -42,6 +42,27 @@ class CalendarView {
 		return $this->carbon->format('');
 	}
 	
+	function date_timezone_get(){
+		$html = [];
+		$html[] = '<div class="dating">';
+		$html[] = '<table class="table">';
+		$html[] = '<thead>';
+		$html[] = '<tr>';
+    	$html[] = '<th></th>';
+		$html[] = '<th>1</th>';
+		$html[] = '<th>2</th>';
+		$html[] = '<th>3</th>';
+		$html[] = '<th>4</th>';
+		$html[] = '<th>5</th>';
+		$html[] = '<th>6</th>';
+		$html[] = '<th>7</th>';
+		$html[] = '</tr>';
+		$html[] = '</thead>';
+		$html[] = '</calendar>';
+		$html[] = '</table>';
+		return implode("", $html);
+	}
+	
 	/**
 	 * カレンダーの曜日を出力する
 	 */
