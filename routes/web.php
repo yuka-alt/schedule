@@ -36,4 +36,4 @@ Route::post('/store', [App\Http\Controllers\ScheduleController::class, 'store'])
 Route::get('/create', [App\Http\Controllers\ScheduleController::class, 'create'])->name('create');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
 Route::get('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');
-Route::get('/oneday', [App\Http\Controllers\ScheduleController::class, 'span'])->name('span');
+Route::post('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');

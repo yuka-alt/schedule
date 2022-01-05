@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\schedule;
-
+use DateTime;
 //use App\Models\schedule;
 
 //class ScheduleController extends Controller
@@ -111,21 +111,26 @@ class ScheduleController extends Controller
         return view('create');
     }
 
-    public function oneday(){
+    public function oneday(Request $request){
         $schedules = schedule::all();
-        return view('calendar.oneday', [
+        foreach($schedules as &$schedule){
+            $schedule->span = $this->span($schedule);
+        }
+
+           return view('calendar.oneday', [
             'schedules' => $schedules,
             // 'test' => 'amaike',
         ]);
         return view('oneday');
     }
 
-    public function span(){
-        $span = schedules::select('start','end')->select(DB::raw('end' - 'start'))->get();
-        return view('calendar.oneday', [
-            'span' => $span,
-        ]);
-        return view('oneday');
+    public function span($schedule){
+        $start= new DateTime($schedule->start);
+        $start= $start->format('H');
+        $end= new DateTime($schedule->end);
+        $end= $end->format('H');
+        $span= $end - $start;
+        return $span;
     }
 
 }

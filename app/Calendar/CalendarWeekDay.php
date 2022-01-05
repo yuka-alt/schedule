@@ -3,7 +3,7 @@ namespace App\Calendar;
 use Carbon\Carbon;
 
 class CalendarWeekDay {
-	protected $carbon;
+	public $carbon;
 
 	function __construct($date){
 		$this->carbon = new Carbon($date);

@@ -62,18 +62,27 @@ class CalendarView {
 		$html[] = '</thead>';
 		$html[] = '<tbody>';
 		
+		// print_r($this->carbon->format('Ym'));
+		// exit;
 		$weeks = $this->getWeeks();
 		foreach($weeks as $week){
 			$html[] = '<tr class="'.$week->getClassName().'">';
 			$days = $week->getDays();
-			foreach($days as $day){
+			foreach($days as $day){ 
+				$d='';
 				$html[] = '<td class="'.$day->getClassName().'">';
-				$html[] = $day->render();
+				$html[] = '<form action="/oneday" method= "post">'; 
+				if($day->render() != '') {
+					$d=$day->carbon->format('d');
+					$html[] = '<input type= submit value="'.$d.'">';
+				}
+				$html[] = '<input type= hidden name= "date" value= "'.$this->carbon->format('Ym').$d.'">';
+				$html[] = '</form>';
 				$html[] = '</td>';
+
 			}
 			$html[] = '</tr>';
 		}
-		
 		$html[] = '</tbody>';
 
 		$html[] = '</table>';

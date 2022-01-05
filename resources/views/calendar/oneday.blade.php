@@ -75,7 +75,7 @@
                 <td>{{ $i }}:00</td>
                 @foreach($schedules as $schedule)
                     @if ($i == $schedule->start->format('H') )
-                        <td rowspan="{{ $span }}">{{$schedule->title}}</td>
+                        <td rowspan="{{ $schedule->span }}">{{$schedule->title}}</td>
                         <!-- rouspanstatとendの時間を引き算させる -->
                     @endif
                 @endforeach
