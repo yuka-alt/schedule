@@ -44,12 +44,13 @@ class ScheduleController extends Controller
     // 月を変える（１ヶ月のカレンダー）
     function moveMonth($ym)
     {
+        if (isset($_GET['ym'])) {
+            $ym = $_GET['ym'];
+        } else {
+            // 今月の年月を表示
+            $ym = date('Y-m');
+        }
 
-        // １ヶ月のカレンダーの日付を作成
-
-
-
-        // 対象の月のスケジュールをデータベースから取得する
 
     }
 

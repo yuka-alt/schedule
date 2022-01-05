@@ -25,7 +25,7 @@ class CalendarView {
 		$html[] = '<table class="table">';
 		$html[] = '<thead>';
 		$html[] = '<tr>';
-    $html[] = '<th></th>';
+    	$html[] = '<th></th>';
 		$html[] = '<th>1</th>';
 		$html[] = '<th>2</th>';
 		$html[] = '<th>3</th>';
