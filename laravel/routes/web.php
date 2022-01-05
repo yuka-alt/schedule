@@ -33,6 +33,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/calendar', [App\Http\Controllers\CalendarController::class, 'calendar'])->name('calendar');
 
-Route::get('/register', [App\Http\Controllers\Schedulecontroller::class, 'register'])->name('register');
+Route::get('/register', [App\Http\Controllers\ScheduleController::class, 'register'])->name('register');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
-Route::get('/oneday', [App\Http\Controllers\Schedulecontroller::class, 'oneday'])->name('oneday');
+Route::get('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');
