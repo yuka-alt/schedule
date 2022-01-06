@@ -1,10 +1,5 @@
-<?php
-// エラー表示あり
-ini_set('display_errors',1);
-?>
-
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
+@section('content')
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +20,6 @@ ini_set('display_errors',1);
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
     
 </head>
-<body>
     <h1>スケジュール登録</h1>
     <form action="{{ url('store') }}" method="post">
         {{ csrf_field() }}
@@ -55,8 +49,11 @@ ini_set('display_errors',1);
             </li>
             <li>
                 <input type="submit" value="登録する">
+                <button>
+                    <a href="/calendar">戻る</a>
+                </button>
+
             </li>
         </ul>
     </form>
-</body>
-</html>
+@endsection

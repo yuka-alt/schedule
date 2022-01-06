@@ -7,8 +7,9 @@ class CalendarView {
 
 	private $carbon;
 
-	function __construct($date){
+	function __construct($date, $schedules) {
 		$this->carbon = new Carbon($date);
+		$this->schedules = $schedules;
 	}
 	/**
 	 * タイトル
@@ -92,12 +93,25 @@ class CalendarView {
 			foreach($days as $day){ 
 				$d='';
 				$html[] = '<td class="'.$day->getClassName().'">';
-				$html[] = '<form action="/oneday" method= "post">'; 
+				$html[] = '<form action="/oneday/'. $this->carbon->format('Ym').$d.'" method= "get">'; 
+				
 				if($day->render() != '') {
-					$d=$day->carbon->format('d');
-					$html[] = '<input type= submit value="'.$d.'">';
+					$d = $day->carbon->format('j');
+					// 対象日のスケジュールがあればボタンを設置
+					// デフォルト値をセット
+					$day_tag = $day->render();
+					foreach ($this->schedules as $schedule) {
+						// todo endの日付も比較したいが、endのオブジェクトがうまく取れない
+						if ($schedule->start->format('j') == $d) {
+							// 条件に合うデータが見つかればボタンを設置
+							$day_tag = '<input type= submit value="'.$d.'">';
+							// 余計な繰り返し処理をしないようにする
+							continue;
+						}
+					}
+					$html[] = $day_tag;
 				}
-				$html[] = '<input type= hidden name= "date" value= "'.$this->carbon->format('Ym').$d.'">';
+				$html[] = '<input type= hidden name= "date" value= "'.$this->carbon->format('Ym').$day->carbon->format('d').'">';
 				$html[] = '</form>';
 				$html[] = '</td>';
 

@@ -53,3 +53,13 @@ p{
 .all{
     display: block;
 }
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+}
+
+.dayly-title {
+    text-align: center;
+}
