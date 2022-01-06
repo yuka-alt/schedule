@@ -37,3 +37,4 @@ Route::get('/create', [App\Http\Controllers\ScheduleController::class, 'create']
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
 Route::get('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');
 Route::get('/week', [App\Http\Controllers\ScheduleController::class, 'week'])->name('week');
+Route::post('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');

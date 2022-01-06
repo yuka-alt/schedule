@@ -40,13 +40,11 @@ ini_set('display_errors',1);
             </li>
             <li>
                 <label>開始日時</label>
-                <input type="date" name="start" id="">
-                <input type="time" name="starttime" id="">
+                <input type="datetime-local" name="start" id="">
             </li>
             <li>
                 <label>終了日時</label>
-                <input type="date" name="end" id="">
-                <input type="time" name="endtime" id="">
+                <input type="datetime-local" name="end" id="">
 
             </li>
             <li>

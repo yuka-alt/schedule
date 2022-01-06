@@ -27,65 +27,68 @@
         ○月○日
     </div>
     
-    <div class="all">
-        <div class="table_css">
-            <table border="1" align="right">
-            @foreach($schedules as $schedule)
-            <tr class="nostripe">
-                <td >{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
+    <p>----ここから第一段階----</p>
+    <p>まずは、こんな感じの表示にしたいというHTMLを作成する</p>
+    <table border="1">
+      <tr>
+        <th colspan="4">12月22日（wed）</th>
+      </tr>
+      <tr>
+        <td>08:00</td>
+        <td rowspan="2">予定１</td>
+        <td rowspan="3">予定２</td>
+      </tr>
+      <tr>
+        <td>09:00</td>
+        <td rowspan="3">予定３</td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+      </tr>
+      <tr>
+        <td>11:00</td>
+      </tr>
+      <tr>
+        <td>12:00</td>
+      </tr>
+      <tr>
+        <td>13:00</td>
+        <td rowspan="2">予定４</td>
+      </tr>
+      <tr>
+        <td>14:00</td>
+      </tr>
+    </table>
+​
+    <p>----ここから第二段階----</p>
+    <p>bladeファイルに変数を割り当てる。可能な部分は繰り返し処理も入れてみる。</p>
+    <table border="1">
+      <tr>
+        <th colspan="4">12月22日（wed）</th>
+        <!-- 「4」のところは変数にできるとなおよし。コントローラーで作成して、変数をセットする
+        日付はコントローラから送られてきた変数でセット。 -->
+
+      </tr>
+      <!-- 0:00から24:00までの繰り返し処理 -->
+        @for ($i = 0; $i < 24; $i++)
+            <tr>
+                <td>{{ $i }}:00</td>
+                @foreach($schedules as $schedule)
+                    @if ($i == $schedule->start->format('H') )
+                        <td rowspan="{{ $schedule->span }}">{{$schedule->title}}</td>
+                        <!-- rouspanstatとendの時間を引き算させる -->
+                    @endif
+                @endforeach
             </tr>
-            @endforeach
-            </table>
-        </div>
-            <p>8:00</p>
-            <p>9:00</p>
-            <p>10:00</p>
-            <p>11:00</p>
-            <p>12:00</p>
-            <p>13:00</p>
-            <p>14:00</p>
-            <p>15:00</p>
-            <p>16:00</p>
-            <p>17:00</p>
-            <p>18:00</p>
-            <p>19:00</p>
-            <p>20:00</p>
-    </div>
+        @endfor
+      <!-- <tr></tr>タグのかたまりを繰り返し処理で作成する。 -->
+    </table>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+</style>
+
+
 </body>
 </html>
