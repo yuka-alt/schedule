@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Models\schedule;
 
+/**
+ * test
+ */
+
 class ScheduleController extends Controller
 {
     /**
