@@ -20,7 +20,7 @@ class ScheduleController extends Controller
     public function index(Request $request)
     {
         $schedules = Schedule::orderBy('created_at', 'asc')->get();
-        return view('schedules.index', [
+        return view('schedule.index', [
             'schedules' => $schedules,
         ]);
     }
