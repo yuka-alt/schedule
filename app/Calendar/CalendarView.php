@@ -17,31 +17,6 @@ class CalendarView {
 	public function getTitle(){
 		return $this->carbon->format('Y年n月');
 	}
-
-	/**
-	 * カレンダーの日付を出力する
-	 */
-	function getTimezone(){
-		// $html = [];
-		// $html[] = '<div class="dating">';
-		// $html[] = '<table class="table">';
-		// $html[] = '<thead>';
-		// $html[] = '<tr>';
-    // $html[] = '<th></th>';
-		// $html[] = '<th>1</th>';
-		// $html[] = '<th>2</th>';
-		// $html[] = '<th>3</th>';
-		// $html[] = '<th>4</th>';
-		// $html[] = '<th>5</th>';
-		// $html[] = '<th>6</th>';
-		// $html[] = '<th>(土)</th>';
-		// $html[] = '</tr>';
-		// $html[] = '</thead>';
-		// $html[] = '</calendar>';
-		// $html[] = '</table>';
-		// return implode("", $html);
-		return $this->carbon->format('');
-	}
 	
 	function date_timezone_get(){
 		$html = [];
@@ -84,8 +59,6 @@ class CalendarView {
 		$html[] = '</thead>';
 		$html[] = '<tbody>';
 		
-		// print_r($this->carbon->format('Ym'));
-		// exit;
 		$weeks = $this->getWeeks();
 		foreach($weeks as $week){
 			$html[] = '<tr class="'.$week->getClassName().'">';
@@ -93,28 +66,27 @@ class CalendarView {
 			foreach($days as $day){ 
 				$d='';
 				$html[] = '<td class="'.$day->getClassName().'">';
-				$html[] = '<form action="/oneday/'. $this->carbon->format('Ym').$d.'" method= "get">'; 
-				
-				if($day->render() != '') {
+				$html[] = '<form action="/oneday/'.$this->carbon->format('Ym').$d.'"method="get">';
+
+				if ($day->render() !='') {
 					$d = $day->carbon->format('j');
 					// 対象日のスケジュールがあればボタンを設置
 					// デフォルト値をセット
 					$day_tag = $day->render();
-					foreach ($this->schedules as $schedule) {
-						// todo endの日付も比較したいが、endのオブジェクトがうまく取れない
+					foreach($this->schedules as $schedule){
+					// todo endの日付も比較したいが、endのオブジェクトがうまく取れない
 						if ($schedule->start->format('j') == $d) {
-							// 条件に合うデータが見つかればボタンを設置
-							$day_tag = '<input type= submit value="'.$d.'">';
-							// 余計な繰り返し処理をしないようにする
+							// 条件に見合うデータがあればボタン設置
+							$day_tag = '<input type= submit value= "'.$d.'">';
+							// 余計な繰り返しをさせない
 							continue;
 						}
 					}
-					$html[] = $day_tag;
+					$html[]= $day_tag;
 				}
-				$html[] = '<input type= hidden name= "date" value= "'.$this->carbon->format('Ym').$day->carbon->format('d').'">';
+				$html[] = '<input type=hidden name= "date" value= "'.$this->carbon->format('Ym').$d.'">';
 				$html[] = '</form>';
 				$html[] = '</td>';
-
 			}
 			$html[] = '</tr>';
 		}
@@ -153,21 +125,6 @@ class CalendarView {
 
 		return $weeks;
 	}
-	
-    // $html[] = '<th></th>';
-	// 	$html[] = '<th>(日)</th>';
-	// 	$html[] = '<th>(月)</th>';
-	// 	$html[] = '<th>(火)</th>';
-	// 	$html[] = '<th>(水)</th>';
-	// 	$html[] = '<th>(木)</th>';
-	// 	$html[] = '<th>(金)</th>';
-	// 	$html[] = '<th>(土)</th>';
-	// 	$html[] = '</tr>';
-	// 	$html[] = '</thead>';
-	// 	$html[] = '</calendar>';
-	// 	$html[] = '</table>';
-	// 	return implode("", $html);
-	// }
 
 	/**
 	 * カレンダーの時間を出力する

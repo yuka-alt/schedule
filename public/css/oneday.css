@@ -11,6 +11,9 @@ table{
     border: 1px solid black;
     table-layout: fixed;
     width: 300px;
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
 } 
 
 .table_css{
@@ -30,10 +33,6 @@ tr{
     width: 300px;
 }
 
-.nostripe{
-    
-}
-
 .day{
     position: absolute;
     padding: 20px;
@@ -50,14 +49,9 @@ p{
     margin-bottom: 1.2rem;
     margin-left: 40%;
 }
+
 .all{
     display: block;
-}
-
-table {
-    border-collapse: collapse;
-    width: 90%;
-    margin: auto;
 }
 
 .dayly-title {

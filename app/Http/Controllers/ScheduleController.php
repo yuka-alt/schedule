@@ -35,19 +35,6 @@ class ScheduleController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function index(Request $request)
-    // {
-    //     $schedules = Schedule::orderBy('created_at', 'asc')->get();
-    //     return view('schedules.index', [
-    //         'schedules' => $schedules,
-    //     ]);
-    // }
-
     public function month(Request $request)
     {
         $schedules = Schedule::orderBy('created_at', 'asc')->get();
@@ -55,39 +42,6 @@ class ScheduleController extends Controller
             'schedules' => $schedules,
         ]);
     }
-
-    //
-    // 月を変える（１ヶ月のカレンダー）
-    function moveMonth($ym)
-    {
-
-        // １ヶ月のカレンダーの日付を作成
-
-
-
-        // 対象の月のスケジュールをデータベースから取得する
-
-    }
-
-    //　週を変える（週のカレンダー）
-
-
-    // 日を変える（一日の予定表）
-
-
-
-    // 予定を登録する
-    function registSchedule()
-    {
-
-        $date = '2021-11-24';
-        $memo = '仕事する';
-
-        // 登録する
-
-
-    }
-    //
 
     /**
      * スケジュール一覧
@@ -138,68 +92,20 @@ class ScheduleController extends Controller
         list($yesterday, $tomorrow) = $this->setDate($request->date);
         return view('calendar.oneday', [
             'schedules' => $schedules,
-            'date'      => $date,
+            'date' => $date,
             'yesterday' => $yesterday,
-            'tomorrow'  => $tomorrow,
-            // 'test' => 'amaike',
+            'tomorrow' => $tomorrow,
         ]);
-        return view('oneday');
     }
-
 
     public function week(){
         $calendar = new CalendarWeek(time());
         $schedules = schedule::all();
-        return view('calendar.week', [
+        return view('calendar.week',[
             'schedules' => $schedules,
-            'calendar' => $calendar, 
-            // 'test' => 'amaike',
+            'calendar' => $calendar,
         ]);
     }
-
-    // public function time(){
-    //     $start = "8";
-    //     $end = "12";
-    //     $title= "お買い物";
-
-    //     for ($i=1; $i <=3 ; $i+1) { 
-    //         # code...
-    //     }
-
-    //     [
-    //         [
-    //             8 : {
-    //                 id: 1,
-    //                 title: '予定1',
-    //                 //start: 8,
-    //                 //end: 12,
-    //                 span: 4
-    //             },
-    //             12 : {
-    //                 id: 5,
-    //                 title: '予定5',
-    //                 span: 1
-    //             }
-    //             15 : {
-    //                 id: 3,
-    //                 title: '予定3',
-    //                 span: 2
-    //             }
-    //         ],
-    //         [
-    //             10 : {
-    //                 id: 2,
-    //                 title: '予定2',
-    //                 span: 5
-    //             }
-    //         ],
-    //             11 : {
-    //                 id: 4,
-    //                 title: '予定4',
-    //                 span: 4
-    //             }
-    //         ]
-    //     ]
 
     public function span($schedule){
         $start= new DateTime($schedule->start);
@@ -210,7 +116,7 @@ class ScheduleController extends Controller
         return $span;
     }
 
-	/**
+    /**
 	 * 昨日と明日の年月日をセット
 	 * 
 	 * @access  public

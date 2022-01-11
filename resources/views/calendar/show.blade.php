@@ -12,7 +12,6 @@
                     <a href="/create/">予定登録</a>
                 </div>
                 <div class="card-body">
-                    {!! $calendar->getTimezone() !!}
 					{!! $calendar->render() !!}
                 </div>
             </div>
