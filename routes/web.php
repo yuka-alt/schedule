@@ -32,8 +32,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/calendar', [App\Http\Controllers\CalendarController::class, 'calendar'])->name('calendar');
+Route::get('/calendar/{date}', [App\Http\Controllers\CalendarController::class, 'calendar'])->name('calendar');
 Route::post('/store', [App\Http\Controllers\ScheduleController::class, 'store'])->name('store');
 Route::get('/create', [App\Http\Controllers\ScheduleController::class, 'create'])->name('create');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
 Route::get('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');
-Route::post('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');
+Route::get('/week', [App\Http\Controllers\ScheduleController::class, 'week'])->name('week');
+Route::get('/oneday/{date}', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');

@@ -48,10 +48,10 @@ ini_set('display_errors',1);
 
             </li>
             <li>
-                <input type="checkbox" name="all" id="ckeck-a" value="終日"><label for="check-a">終日</label>
+                <input type="checkbox" name="all" id="ckeck-a" value="1"><label for="check-a">終日</label>
             </li>
             <li>
-                <input type="checkbox" name="repeat" id="check-b" value="繰り返し"><label for="check-b">繰り返し</label>
+                <input type="checkbox" name="repeat" id="check-b" value="1"><label for="check-b">繰り返し</label>
             </li>
             <li>
                 <input type="submit" value="登録する">
