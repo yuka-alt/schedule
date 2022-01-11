@@ -3,8 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\schedule;
+use App\Calendar\CalendarWeek;
+
+use DateTime;
+//use App\Models\schedule;
+
+//class ScheduleController extends Controller
+//{
+//    public function month(){
+//        return view('schedule.month');
+//    }
+//}
+
+use App\Calendar\CalendarView;
+
 
 /**
  * test
@@ -13,18 +26,35 @@ use App\Models\schedule;
 class ScheduleController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    // public function index(Request $request)
+    // {
+    //     $schedules = Schedule::orderBy('created_at', 'asc')->get();
+    //     return view('schedules.index', [
+    //         'schedules' => $schedules,
+    //     ]);
+    // }
+
+    public function month(Request $request)
     {
         $schedules = Schedule::orderBy('created_at', 'asc')->get();
         return view('schedule.index', [
             'schedules' => $schedules,
         ]);
     }
-
 
     //
     // 月を変える（１ヶ月のカレンダー）
@@ -59,71 +89,142 @@ class ScheduleController extends Controller
     }
     //
 
-
-
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * スケジュール一覧
      */
-    public function create()
+    public function index(Request $request)
     {
-        return view('schedule.create');
+        $schedules = schedule::all();
+        return view('schedule.index', [
+            'schedules' => $schedules,
+            // 'test' => 'amaike',
+        ]);
     }
-
+    
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * スケジュール登録
      */
     public function store(Request $request)
     {
-        //
+        schedule::create([
+            'user_id'=> auth()->id(), 
+            'title'=> $request->title,
+            'body'=> $request->body, 
+            'place'=>$request->place,
+            'start'=>$request->start,
+            'end'=>$request->end,
+            'all'=>$request->all,
+            'repeat'=>$request->repeat,
+            'starttime'=>$request->starttime,
+            'endtime'=>$request->endtime,
+
+        ]);
+        // echo 'test'; exit;
+        return redirect('/calendar');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function create(){
+        return view('create');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function oneday(Request $request){
+        $schedules = $request->user()->schedules()->whereDate('start', $request->date)->get();
+        foreach($schedules as &$schedule){
+            $schedule->span = $this->span($schedule);
+        }
+        // 年月日を作成
+        $date = new DateTime($request->date);
+        // 前日、翌日をセット
+        list($yesterday, $tomorrow) = $this->setDate($request->date);
+        return view('calendar.oneday', [
+            'schedules' => $schedules,
+            'date'      => $date,
+            'yesterday' => $yesterday,
+            'tomorrow'  => $tomorrow,
+            // 'test' => 'amaike',
+        ]);
+        return view('oneday');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+
+    public function week(){
+        $calendar = new CalendarWeek(time());
+        $schedules = schedule::all();
+        return view('calendar.week', [
+            'schedules' => $schedules,
+            'calendar' => $calendar, 
+            // 'test' => 'amaike',
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    // public function time(){
+    //     $start = "8";
+    //     $end = "12";
+    //     $title= "お買い物";
+
+    //     for ($i=1; $i <=3 ; $i+1) { 
+    //         # code...
+    //     }
+
+    //     [
+    //         [
+    //             8 : {
+    //                 id: 1,
+    //                 title: '予定1',
+    //                 //start: 8,
+    //                 //end: 12,
+    //                 span: 4
+    //             },
+    //             12 : {
+    //                 id: 5,
+    //                 title: '予定5',
+    //                 span: 1
+    //             }
+    //             15 : {
+    //                 id: 3,
+    //                 title: '予定3',
+    //                 span: 2
+    //             }
+    //         ],
+    //         [
+    //             10 : {
+    //                 id: 2,
+    //                 title: '予定2',
+    //                 span: 5
+    //             }
+    //         ],
+    //             11 : {
+    //                 id: 4,
+    //                 title: '予定4',
+    //                 span: 4
+    //             }
+    //         ]
+    //     ]
+
+    public function span($schedule){
+        $start= new DateTime($schedule->start);
+        $start= $start->format('H');
+        $end= new DateTime($schedule->end);
+        $end= $end->format('H');
+        $span= $end - $start;
+        return $span;
     }
+
+	/**
+	 * 昨日と明日の年月日をセット
+	 * 
+	 * @access  public
+	 * @param   string  $date  日時カレンダー表示日
+	 * @return  array
+	 */
+	public function setDate($date)
+	{
+		// 昨日の年月日を作成
+		$t = new DateTime($date);
+		$yesterday = $t->modify('-1 day')->format('Ymd');
+		// 明日の年月日を作成
+		$t = new DateTime($date);
+		$tomorrow = $t->modify('+1 day')->format('Ymd');
+		return array($yesterday, $tomorrow);
+	}
 }

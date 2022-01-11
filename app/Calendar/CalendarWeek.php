@@ -17,6 +17,48 @@ class CalendarWeek {
 		return "week-" . $this->index;
 	}
 
+   /**
+	 * タイトル
+	 */
+	public function getTitle(){
+		return $this->carbon->format('Y年n月');
+	}
+/**
+	 * カレンダーの曜日を出力する
+	 */
+	function render(){
+		$html = [];
+		$html[] = '<div class="calendar">';
+		$html[] = '<table class="table">';
+		$html[] = '<thead>';
+		$html[] = '<tr>';
+		$html[] = '<th>月</th>';
+		$html[] = '<th>火</th>';
+		$html[] = '<th>水</th>';
+		$html[] = '<th>木</th>';
+		$html[] = '<th>金</th>';
+		$html[] = '<th>土</th>';
+    $html[] = '<th>日</th>';
+		$html[] = '</tr>';
+		$html[] = '</thead>';
+		$html[] = '<tbody>';
+		
+		// $weeks = $this->getWeeks();
+	    $days = $this->getDays();
+			foreach($days as $day){
+				$html[] = '<td class="'.$day->getClassName().'">';
+				$html[] = $day->render();
+				$html[] = '</td>';
+			}
+			$html[] = '</tr>';
+
+		$html[] = '</tbody>';
+
+		$html[] = '</table>';
+		$html[] = '</div>';
+		return implode("", $html);
+	}
+
 	/**
 	 * @return CalendarWeekDay[]
 	 */

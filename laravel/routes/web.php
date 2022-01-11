@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/month' , [App\Http\Controllers\ScheduleController::class, 'month'])->name('month');
+
+//Route::get('/1month', 'ScheduleController@month');
+
+Route::get('/month' , [App\Http\Controllers\ScheduleController::class, 'month'])->name('month');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
 
 Route::post('/schedule', [App\Http\Controllers\ScheduleController::class, 'store'])->name('schedule');
@@ -28,4 +33,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/calendar', [App\Http\Controllers\CalendarController::class, 'calendar'])->name('calendar');
 
-Route::get('/test', [App\Http\Controllers\CalendarController::class, 'test'])->name('test');
+Route::get('/register', [App\Http\Controllers\ScheduleController::class, 'register'])->name('register');
+Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedules');
+Route::get('/oneday', [App\Http\Controllers\ScheduleController::class, 'oneday'])->name('oneday');
