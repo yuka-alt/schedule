@@ -17,31 +17,6 @@ class CalendarView {
 	public function getTitle(){
 		return $this->carbon->format('Y年n月');
 	}
-
-	/**
-	 * カレンダーの日付を出力する
-	 */
-	function getTimezone(){
-		// $html = [];
-		// $html[] = '<div class="dating">';
-		// $html[] = '<table class="table">';
-		// $html[] = '<thead>';
-		// $html[] = '<tr>';
-    // $html[] = '<th></th>';
-		// $html[] = '<th>1</th>';
-		// $html[] = '<th>2</th>';
-		// $html[] = '<th>3</th>';
-		// $html[] = '<th>4</th>';
-		// $html[] = '<th>5</th>';
-		// $html[] = '<th>6</th>';
-		// $html[] = '<th>(土)</th>';
-		// $html[] = '</tr>';
-		// $html[] = '</thead>';
-		// $html[] = '</calendar>';
-		// $html[] = '</table>';
-		// return implode("", $html);
-		return $this->carbon->format('');
-	}
 	
 	function date_timezone_get(){
 		$html = [];
@@ -150,21 +125,6 @@ class CalendarView {
 
 		return $weeks;
 	}
-	
-    // $html[] = '<th></th>';
-	// 	$html[] = '<th>(日)</th>';
-	// 	$html[] = '<th>(月)</th>';
-	// 	$html[] = '<th>(火)</th>';
-	// 	$html[] = '<th>(水)</th>';
-	// 	$html[] = '<th>(木)</th>';
-	// 	$html[] = '<th>(金)</th>';
-	// 	$html[] = '<th>(土)</th>';
-	// 	$html[] = '</tr>';
-	// 	$html[] = '</thead>';
-	// 	$html[] = '</calendar>';
-	// 	$html[] = '</table>';
-	// 	return implode("", $html);
-	// }
 
 	/**
 	 * カレンダーの時間を出力する

@@ -29,23 +29,18 @@
             <a href="/oneday/{{ $yesterday }}">昨日</a>
             {{ $date->format('Y年n月j日') }}
             <a href="/oneday/{{ $tomorrow }}">明日</a>
-            </tr>
-        <!-- 「4」のところは変数にできるとなおよし。コントローラーで作成して、変数をセットする
-        日付はコントローラから送られてきた変数でセット。 -->
+            </th>
         </tr>
-      <!-- 0:00から24:00までの繰り返し処理 -->
         @for ($i = 0; $i < 24; $i++)
             <tr>
                 <td>{{ $i }}:00</td>
                 @foreach($schedules as $schedule)
                     @if ($i == $schedule->start->format('H') )
                         <td rowspan="{{ $schedule->span }}">{{$schedule->title}}</td>
-                        <!-- rouspanstatとendの時間を引き算させる -->
                     @endif
                 @endforeach
             </tr>
         @endfor
-      <!-- <tr></tr>タグのかたまりを繰り返し処理で作成する。 -->
     </table>
 </div>
 @endsection
