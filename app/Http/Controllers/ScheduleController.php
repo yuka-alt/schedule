@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\schedule;
 use App\Calendar\CalendarWeek;
 
+use DateTime;
 //use App\Models\schedule;
 
 //class ScheduleController extends Controller
@@ -113,69 +114,58 @@ class ScheduleController extends Controller
         return view('create');
     }
 
-    public function oneday(){
-        $schedules = schedule::all();
-        return view('calendar.oneday', [
+    public function oneday(Request $request){
+        $schedules = $request->user()->schedules()->whereDate('start', $request->date)->get();
+        foreach($schedules as &$schedule){
+            $schedule->span = $this->span($schedule);
+        }
+        // 年月日を作成
+        $date = new DateTime($request->date);
+        // 前日、翌日をセット
+        list($yesterday, $tomorrow) = $this->setDate($request->date);
+           return view('calendar.oneday', [
             'schedules' => $schedules,
-            // 'test' => 'amaike',
+            'date' => $date,
+            'yesterday' => $yesterday,
+            'tomorrow' => $tomorrow,
         ]);
         return view('oneday');
     }
 
-
     public function week(){
         $calendar = new CalendarWeek(time());
         $schedules = schedule::all();
-        return view('calendar.week', [
+        return view('calendar.week',[
             'schedules' => $schedules,
-            'calendar' => $calendar, 
-            // 'test' => 'amaike',
+            'calendar' => $calendar,
         ]);
     }
 
-    // public function time(){
-    //     $start = "8";
-    //     $end = "12";
-    //     $title= "お買い物";
+    public function span($schedule){
+        $start= new DateTime($schedule->start);
+        $start= $start->format('H');
+        $end= new DateTime($schedule->end);
+        $end= $end->format('H');
+        $span= $end - $start;
+        return $span;
+    }
 
-    //     for ($i=1; $i <=3 ; $i+1) { 
-    //         # code...
-    //     }
+    /**
+	 * 昨日と明日の年月日をセット
+	 * 
+	 * @access  public
+	 * @param   string  $date  日時カレンダー表示日
+	 * @return  array
+	 */
+	public function setDate($date)
+	{
+		// 昨日の年月日を作成
+		$t = new DateTime($date);
+		$yesterday = $t->modify('-1 day')->format('Ymd');
+		// 明日の年月日を作成
+		$t = new DateTime($date);
+		$tomorrow = $t->modify('+1 day')->format('Ymd');
+		return array($yesterday, $tomorrow);
+	}
 
-    //     [
-    //         [
-    //             8 : {
-    //                 id: 1,
-    //                 title: '予定1',
-    //                 //start: 8,
-    //                 //end: 12,
-    //                 span: 4
-    //             },
-    //             12 : {
-    //                 id: 5,
-    //                 title: '予定5',
-    //                 span: 1
-    //             }
-    //             15 : {
-    //                 id: 3,
-    //                 title: '予定3',
-    //                 span: 2
-    //             }
-    //         ],
-    //         [
-    //             10 : {
-    //                 id: 2,
-    //                 title: '予定2',
-    //                 span: 5
-    //             }
-    //         ],
-    //             11 : {
-    //                 id: 4,
-    //                 title: '予定4',
-    //                 span: 4
-    //             }
-    //         ]
-    //     ]
-
-    // }
 }

@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
+@section('content')
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,72 +21,31 @@
     <link href="{{ asset('css/oneday.css') }}" rel="stylesheet">
     <title>1dayスケジュール</title>
 </head>
-<body>
-    <h1>1dayスケジュール</h1>
-
-    <div class="day">
-        ○月○日
-    </div>
-    
-    <div class="all">
-        <div class="table_css">
-            <table border="1" align="right">
-            @foreach($schedules as $schedule)
-            <tr class="nostripe">
-                <td >{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
-            </tr>    
-            <tr class="nostripe">
-                <td>{{$schedule->title}}</td>
+<div class="calendar">
+    <table border="1">
+        <tr>
+            <th colspan="4" class="dayly-title">
+            <a href="/calendar/{{ $date->format('Ymd') }}">月次</a>
+            <a href="/oneday/{{ $yesterday }}">昨日</a>
+            {{ $date->format('Y年n月j日') }}
+            <a href="/oneday/{{ $tomorrow }}">明日</a>
             </tr>
-            @endforeach
-            </table>
-        </div>
-            <p>8:00</p>
-            <p>9:00</p>
-            <p>10:00</p>
-            <p>11:00</p>
-            <p>12:00</p>
-            <p>13:00</p>
-            <p>14:00</p>
-            <p>15:00</p>
-            <p>16:00</p>
-            <p>17:00</p>
-            <p>18:00</p>
-            <p>19:00</p>
-            <p>20:00</p>
-    </div>
-</body>
-</html>
+        <!-- 「4」のところは変数にできるとなおよし。コントローラーで作成して、変数をセットする
+        日付はコントローラから送られてきた変数でセット。 -->
+        </tr>
+      <!-- 0:00から24:00までの繰り返し処理 -->
+        @for ($i = 0; $i < 24; $i++)
+            <tr>
+                <td>{{ $i }}:00</td>
+                @foreach($schedules as $schedule)
+                    @if ($i == $schedule->start->format('H') )
+                        <td rowspan="{{ $schedule->span }}">{{$schedule->title}}</td>
+                        <!-- rouspanstatとendの時間を引き算させる -->
+                    @endif
+                @endforeach
+            </tr>
+        @endfor
+      <!-- <tr></tr>タグのかたまりを繰り返し処理で作成する。 -->
+    </table>
+</div>
+@endsection

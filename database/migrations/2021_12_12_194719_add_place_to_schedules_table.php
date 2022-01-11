@@ -17,8 +17,8 @@ class AddPlaceToSchedulesTable extends Migration
             $table->text('place')->nullable();
             $table->datetime('start')->nullable();
             $table->datetime('end')->nullable();
-            $table->tinyInteger('all')->default(0);
-            $table->tinyInteger('repeat')->default(0);
+            $table->tinyInteger('all')->nullable()->default(0);
+            $table->tinyInteger('repeat')->nullable()->default(0);
 
         });
     }
