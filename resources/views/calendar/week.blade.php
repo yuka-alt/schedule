@@ -5,11 +5,12 @@
        <div class="col-md-8">
            <div class="card">
                <div class="card-header">
-                   {{ $calendar->getTitle() }}</div>
+　　               <a href="/week/">&laquo; 前週</a>
+                   {{ $calendar->getTitle() }}
+                   <a href="/week/">次週 &laquo;</a> 
+                </div>
                <div class="card-body">
 		          			{!! $calendar->render() !!}
-                              <a href="/calendar/">今月</a>
-                    <!-- {*!! $calendar->time() !!*} -->
                </div>
            </div>
        </div>

@@ -44,7 +44,7 @@ class CalendarWeek {
 		$html[] = '<tbody>';
 		
 		// $weeks = $this->getWeeks();
-			$days = $this->getDays();
+	    $days = $this->getDays();
 			foreach($days as $day){
 				$html[] = '<td class="'.$day->getClassName().'">';
 				$html[] = $day->render();
