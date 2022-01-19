@@ -8,8 +8,8 @@
                     <a href="/calendar/{{ $calendar->previous}}">前月</a>
                     {{ $calendar->getTitle() }}
                     <a href="/calendar/{{ $calendar->next}}">来月</a>
-                    <a href="/calendar/">今月</a>
-                    <a href="/create/">予定登録</a>
+                    <a href="/calendar">今月</a>
+                    <a href="/create">予定登録</a>
                 </div>
                 <div class="card-body">
 					{!! $calendar->render() !!}
